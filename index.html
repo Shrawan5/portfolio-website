@@ -201,7 +201,7 @@
         .hero-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            gap: 50px;
             align-items: center;
         }
         
@@ -220,13 +220,14 @@
         }
         
         .profile-img img {
-    width: 300px;
-    height: 300px;
-    object-fit: cover;        /* Prevents distortion */
-    border-radius: 50%;       /* Perfect circle */
-    box-shadow: 0 30px 30px rgba(0, 0, 0, 0.2);
-    border: 5px solid white;
-}
+            width: 100%;
+            max-width: 400px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 8px solid white;
+        }
         
         .btn {
             display: inline-block;
@@ -371,6 +372,103 @@
             border-radius: 4px;
         }
         
+        /* Contact Form */
+        .contact-form-section {
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.1) 0%, rgba(26, 188, 156, 0.1) 100%);
+        }
+        
+        .contact-form-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .contact-form {
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary-color);
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 180px;
+            resize: vertical;
+        }
+        
+        .form-submit {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .submit-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+        
+        .submit-btn:hover {
+            background-color: #16a085;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .form-message {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+        }
+        
+        .form-message.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+        
+        .form-message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+        
         /* Social Media & Articles */
         .links-container {
             display: grid;
@@ -484,6 +582,11 @@
             
             .profile-img img {
                 max-width: 300px;
+                height: 300px;
+            }
+            
+            .contact-form {
+                padding: 30px;
             }
         }
         
@@ -533,6 +636,10 @@
             .timeline-item {
                 padding-left: 60px;
             }
+            
+            .contact-form {
+                padding: 25px;
+            }
         }
         
         @media (max-width: 576px) {
@@ -550,6 +657,15 @@
             
             .btn {
                 padding: 10px 25px;
+            }
+            
+            .profile-img img {
+                max-width: 250px;
+                height: 250px;
+            }
+            
+            .contact-form {
+                padding: 20px;
             }
         }
     </style>
@@ -577,6 +693,7 @@
                         <li><a href="#skills">Skills</a></li>
                         <li><a href="#social">Social Media</a></li>
                         <li><a href="#articles">Articles</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
                 </nav>
             </div>
@@ -670,12 +787,7 @@
                     </div>
                 </div>
                 
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Teacher - Science/Maths/Social/Computer</h3>
-                        <h4>Gyanodaya Secondary School</h4>
-                    </div>
-                </div>
+                <!-- Teacher section removed as requested -->
             </div>
             
             <h2 style="margin-top: 60px;">Consultancy & Training</h2>
@@ -999,6 +1111,43 @@
         </div>
     </section>
 
+    <!-- Contact Form Section -->
+    <section id="contact" class="contact-form-section">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <div class="contact-form-container">
+                <div class="contact-form">
+                    <form id="web3forms-form" action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="1cf3ee69-46e1-4135-8de5-38733cc4f360">
+                        
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="your.email@example.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Your Message *</label>
+                            <textarea id="message" name="message" class="form-control" placeholder="Write your message here..." required></textarea>
+                        </div>
+                        
+                        <div class="form-submit">
+                            <button type="submit" class="submit-btn">
+                                <i class="fas fa-paper-plane"></i> Send Message
+                            </button>
+                        </div>
+                        
+                        <div id="form-message" class="form-message"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -1016,6 +1165,7 @@
                         <li><a href="#experience" style="color: white; text-decoration: none;">Experience</a></li>
                         <li><a href="#education" style="color: white; text-decoration: none;">Education</a></li>
                         <li><a href="#skills" style="color: white; text-decoration: none;">Skills</a></li>
+                        <li><a href="#contact" style="color: white; text-decoration: none;">Contact</a></li>
                     </ul>
                 </div>
                 
@@ -1244,6 +1394,60 @@
         if(skillsSection) {
             observer.observe(skillsSection);
         }
+        
+        // Contact Form Handling
+        const contactForm = document.getElementById('web3forms-form');
+        const formMessage = document.getElementById('form-message');
+        
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Show loading state
+            const submitBtn = contactForm.querySelector('.submit-btn');
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+            
+            try {
+                const formData = new FormData(contactForm);
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    // Show success message
+                    formMessage.textContent = 'Thank you! Your message has been sent successfully.';
+                    formMessage.className = 'form-message success';
+                    
+                    // Reset form
+                    contactForm.reset();
+                    
+                    // Hide message after 5 seconds
+                    setTimeout(() => {
+                        formMessage.style.display = 'none';
+                    }, 5000);
+                } else {
+                    // Show error message
+                    formMessage.textContent = 'Sorry, there was an error sending your message. Please try again.';
+                    formMessage.className = 'form-message error';
+                }
+            } catch (error) {
+                // Show error message
+                formMessage.textContent = 'Sorry, there was an error sending your message. Please try again.';
+                formMessage.className = 'form-message error';
+                console.error('Form submission error:', error);
+            } finally {
+                // Reset button state
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+                
+                // Show message
+                formMessage.style.display = 'block';
+            }
+        });
     </script>
 </body>
 </html>
